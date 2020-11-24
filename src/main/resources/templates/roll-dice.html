@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Roll Dice Exercise</title>
+</head>
+<body>
+<h1>Guess the roll for one die!</h1>
+<a href="/roll-dice/1">The roll will be a 1!</a>
+<br>
+<a href="/roll-dice/2">The roll will be a 2!</a>
+<br>
+<a href="/roll-dice/3">The roll will be a 3!</a>
+<br>
+<a href="/roll-dice/4">The roll will be a 4!</a>
+<br>
+<a href="/roll-dice/5">The roll will be a 5!</a>
+<br>
+<a href="/roll-dice/6">The roll will be a 6!</a>
+
+<div th:if="${attempt}">
+    <h2> You have gotten <span th:text="${correct}"></span> correct.</h2>
+    <div th:each="turn : ${roll}">
+    <h3>
+    You guessed <span th:text="${turn.getGuess()}"></span>. The dice rolled <span th:text="${turn.getActual()}"></span>. This is attempt # <span th:text ="${roll.indexOf(turn)}"></span>.
+    </h3>
+    </div>
+</div>
+</body>
+</html>
