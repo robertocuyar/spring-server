@@ -45,6 +45,22 @@ public class PostController {
         return new RedirectView("/posts");
     }
 
+    @GetMapping ("/posts/edit/{id}")
+    public String postEdit (@PathVariable long id, Model model){
+        model.addAttribute("post", postDAO.getById(id));
+        return "posts/edit";
+    }
+
+    @PostMapping ("/posts/edit/{id}")
+    public RedirectView postEditResult (@PathVariable long id, @RequestParam(name="title") String title, @RequestParam(name="body") String body){
+        Post editPost = postDAO.getById(id);
+        editPost.setTitle(title);
+        editPost.setBody(body);
+        postDAO.save(editPost);
+        return new RedirectView("/posts");
+    }
+
+
 
 
 }

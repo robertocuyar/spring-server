@@ -10,7 +10,7 @@
     <p th:text="${post.getBody()}"></p>
     <br>
     <div>
-        <a href="">Edit</a>
+        <a th:href="@{/posts/edit/{id}(id = ${post.getId()})}">Edit</a>
     </div>
     <div>
         <a th:href="@{/posts/delete/{id}(id=${post.getId()})}">Delete</a>

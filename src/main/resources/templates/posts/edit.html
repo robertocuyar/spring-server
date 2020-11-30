@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials :: head"/>
+
+<body>
+<nav th:replace="partials :: navbar" />
+<div class="ui container">
+    <form method ="POST" class="ui form" th:action = "@{/posts/edit/{id}(id = ${post.getId()})}">
+        <div class="field">
+            <label>Title</label>
+            <input type="text" name="title" th:value="${post.getTitle()}" placeholder="Title" id="title">
+        </div>
+        <div class="field">
+            <label>Blog Body</label>
+            <textarea name="body" id="body" th:text="${post.getBody()}"></textarea>
+        </div>
+        <button type="submit" class="ui submit button">Submit</button>
+    </form>
+</div>
+<div th:replace="partials :: footer"/>
+</body>
+</html>
