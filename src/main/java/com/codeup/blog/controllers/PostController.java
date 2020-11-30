@@ -2,6 +2,7 @@ package com.codeup.blog.controllers;
 
 import com.codeup.blog.models.Post;
 import com.codeup.blog.models.PostRepository;
+import com.codeup.blog.models.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +12,11 @@ import org.springframework.web.servlet.view.RedirectView;
 public class PostController {
 
     private final PostRepository postDAO;
+    private final UserRepository userDAO;
 
-    public PostController (PostRepository postDAO){
+    public PostController (PostRepository postDAO, UserRepository userDAO){
         this.postDAO = postDAO;
+        this.userDAO = userDAO;
     }
     @GetMapping("/posts")
     public String postIndex (Model model){
@@ -34,7 +37,7 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public RedirectView postCreate (@RequestParam(name="title") String title, @RequestParam(name="body") String body) {
-        Post createPost = new Post (title, body);
+        Post createPost = new Post (title, body, userDAO.getById(2));
         postDAO.save(createPost);
         return new RedirectView("/posts");
     }
