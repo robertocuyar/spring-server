@@ -1,5 +1,6 @@
 package com.codeup.blog.controllers;
 
+import com.codeup.blog.models.EmailService;
 import com.codeup.blog.models.Post;
 import com.codeup.blog.models.PostRepository;
 import com.codeup.blog.models.UserRepository;
@@ -13,10 +14,12 @@ public class PostController {
 
     private final PostRepository postDAO;
     private final UserRepository userDAO;
+    private final EmailService emailService;
 
-    public PostController (PostRepository postDAO, UserRepository userDAO){
+    public PostController (PostRepository postDAO, UserRepository userDAO, EmailService emailService){
         this.postDAO = postDAO;
         this.userDAO = userDAO;
+        this.emailService = emailService;
     }
     @GetMapping("/posts")
     public String postIndex (Model model){
@@ -40,6 +43,7 @@ public class PostController {
     public RedirectView postCreate (@ModelAttribute Post post) {
         post.setUser(userDAO.getById(2));
         postDAO.save(post);
+        emailService.prepareAndSend(post,"Creation", "You created a new blog post!");
         return new RedirectView("/posts");
     }
 
