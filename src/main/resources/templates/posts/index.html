@@ -5,10 +5,12 @@
 <body>
 <nav th:replace="partials :: navbar" />
 <div class="ui container" th:each="post : ${posts}">
-    <h1 th:text="${post.getTitle()}"></h1>
+    <a th:href="@{/posts/{id}(id = ${post.getId()})}">
+    <h1 class="ui header" th:text="${post.getTitle()}"></h1>
     <br>
     <p th:text="${post.getBody()}"></p>
-</div>
+    <div class="ui section divider"></div>
+    </a>
 </div>
 <div th:replace="partials :: footer"/>
 </body>
