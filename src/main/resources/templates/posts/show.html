@@ -8,6 +8,13 @@
     <h1 class="ui header" th:text="${post.getTitle()}"></h1>
     <br>
     <p th:text="${post.getBody()}"></p>
+    <br>
+    <div>
+        <a href="">Edit</a>
+    </div>
+    <div>
+        <a th:href="@{/posts/delete/{id}(id=${post.getId()})}">Delete</a>
+    </div>
 </div>
 <div th:replace="partials :: footer"/>
 </body>

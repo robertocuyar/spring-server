@@ -11,4 +11,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     Post getById(long id);
 
     Post save(Post post);
+
+    Post deleteById(long id);
 }

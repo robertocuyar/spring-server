@@ -39,6 +39,12 @@ public class PostController {
         return new RedirectView("/posts");
     }
 
+    @GetMapping("/posts/delete/{id}")
+    public RedirectView postDelete (@PathVariable long id){
+        postDAO.deleteById(id);
+        return new RedirectView("/posts");
+    }
+
 
 
 }
