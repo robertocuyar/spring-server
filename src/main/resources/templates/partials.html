@@ -14,9 +14,10 @@
         <a href="/posts/create" class="item">
            Create Post
         </a>
-        <a class="item">
-            Friends
-        </a>
+        <a href="/sign-up" class="item">Sign up</a>
+        <form class="item" th:action="@{/logout}" th:method="post">
+            <input type="submit" value="Log out">
+        </form>
         <div class="right menu">
             <div class="item">
                 <div class="ui transparent icon input">
