@@ -1,5 +1,6 @@
-package com.codeup.blog.models;
+package com.codeup.blog.repos;
 
+import com.codeup.blog.models.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.ArrayList;

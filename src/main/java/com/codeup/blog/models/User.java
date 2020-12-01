@@ -3,13 +3,14 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="users")
+@Table(name="users", uniqueConstraints =  @UniqueConstraint(columnNames = {"email", "username"}))
 public class User {
     @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column (nullable = false, length = 100)
     private String username;
+
 
     @Column (nullable = false)
     private String email;
@@ -32,6 +33,12 @@ public class User {
         this.email = email;
         this.password = password;
         this.id = id;
+    }
+    public User(User copy){
+        id = copy.id;
+        email =  copy.email;
+        username = copy.username;
+        password = copy.password;
     }
 
     public String getUsername() { return username; }
