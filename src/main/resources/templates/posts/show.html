@@ -11,10 +11,14 @@
     <p th:text="${post.getBody()}"></p>
     <br>
     <div>
-        <a th:href="@{/posts/edit/{id}(id = ${post.getId()})}">Edit</a>
+        <form th:action="@{/posts/edit/{id}(id = ${post.getId()})}" method="get">
+            <button type = "submit">Edit</button>
+        </form>
     </div>
     <div>
-        <a th:href="@{/posts/delete/{id}(id=${post.getId()})}">Delete</a>
+        <form th:action="@{/posts/delete/{id}(id=${post.getId()})}" method="post">
+            <button type="submit">Delete</button>
+        </form>
     </div>
 </div>
 <div th:replace="partials :: footer"/>

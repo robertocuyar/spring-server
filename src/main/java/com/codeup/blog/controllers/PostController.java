@@ -43,15 +43,15 @@ public class PostController {
     }
 
     @PostMapping("/posts/create")
-    public RedirectView postCreate (@ModelAttribute Post post) {
+    public String postCreate (@ModelAttribute Post post) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setUser(currentUser);
         postDAO.save(post);
         emailService.prepareAndSend(post,"Creation", "You created a new blog post!");
-        return new RedirectView("/posts");
+        return "redirect:/posts";
     }
 
-    @GetMapping("/posts/delete/{id}")
+    @PostMapping("/posts/delete/{id}")
     public RedirectView postDelete (@PathVariable long id){
         postDAO.deleteById(id);
         return new RedirectView("/posts");
