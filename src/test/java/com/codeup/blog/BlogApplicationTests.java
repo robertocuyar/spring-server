@@ -1,5 +1,6 @@
 package com.codeup.blog;
 
+import com.codeup.blog.models.Post;
 import com.codeup.blog.models.User;
 import com.codeup.blog.repos.PostRepository;
 import com.codeup.blog.repos.UserRepository;
@@ -15,11 +16,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 
 import javax.servlet.http.HttpSession;
 
@@ -78,11 +81,75 @@ class BlogApplicationTests {
     @Test
     public void testCreatePost() throws Exception {
         this.mvc.perform(
-                post("/ads/create").with(csrf())
+                post("/posts/create").with(csrf())
                 .session((MockHttpSession) httpSession)
                 .param("title", "test")
-                .param("description", "for sale"))
+                .param("body", "for sale"))
                 .andExpect(redirectedUrl("/posts"));
 
     }
+
+    @Test
+    public void testShowPost () throws Exception {
+
+        Post existingPost = postDao.findAll().get(0);
+
+        this.mvc.perform(get("/posts/" + existingPost.getId()))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString(existingPost.getUser().getEmail())));
+    }
+
+    @Test
+    public void testPostsIndex() throws Exception {
+        Post existingPost = postDao.findAll().get(0);
+
+        this.mvc.perform(get("/posts"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString(existingPost.getTitle())));
+    }
+
+    @Test
+    public void testEditPost() throws Exception {
+        Post existingPost = postDao.findAll().get(0);
+
+        this.mvc.perform(
+                post("/posts/edit/" + existingPost.getId()).with(csrf())
+                .session((MockHttpSession) httpSession)
+                .param("title", "edited title")
+                .param("body", "edited body"))
+                .andExpect(status().is3xxRedirection()
+        );
+
+        this.mvc.perform(get("/posts/" + existingPost.getId()))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("edited title")))
+                .andExpect(content().string(containsString("edited body")));
+    }
+
+    @Test
+    public void testDeletePost() throws Exception {
+
+        this.mvc.perform(
+                post("/posts/create").with(csrf())
+                .session((MockHttpSession) httpSession)
+                .param("title", "post to be deleted")
+                .param("body", "won't last long"))
+                .andExpect(status().is3xxRedirection()
+        );
+        Post existingPost = postDao.getByTitle("post to be deleted");
+
+        this.mvc.perform(
+                post("/posts/delete/" + existingPost.getId()).with(csrf())
+                .session((MockHttpSession) httpSession)
+                .param("id", String.valueOf(existingPost.getId())))
+                .andExpect(status().is3xxRedirection());
+
+    }
+
+
+
+
+
+
+
 }
