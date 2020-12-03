@@ -76,7 +76,7 @@ class BlogApplicationTests {
     }
 
     @Test
-    public void testCreateAd() throws Exception {
+    public void testCreatePost() throws Exception {
         this.mvc.perform(
                 post("/ads/create").with(csrf())
                 .session((MockHttpSession) httpSession)
