@@ -1,5 +1,7 @@
 package com.codeup.blog.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -40,6 +42,7 @@ public class Post {
     public void setBody(String body){ this.body = body; }
     public long getId () { return id; }
     public void setId (long id) { this.id = id; }
+    @JsonIgnore
     public User getUser(){ return user; }
     public void setUser(User user) { this.user = user; }
 }
