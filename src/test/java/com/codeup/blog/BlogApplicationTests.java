@@ -82,6 +82,7 @@ class BlogApplicationTests {
                 .session((MockHttpSession) httpSession)
                 .param("title", "test")
                 .param("description", "for sale"))
-                .andExpect(status().is3xxRedirection());
+                .andExpect(redirectedUrl("/posts"));
+
     }
 }
