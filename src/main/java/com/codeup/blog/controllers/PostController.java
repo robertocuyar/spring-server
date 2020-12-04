@@ -1,7 +1,6 @@
 package com.codeup.blog.controllers;
 
-import com.codeup.blog.SecurityConfiguration;
-import com.codeup.blog.models.EmailService;
+import com.codeup.blog.services.EmailService;
 import com.codeup.blog.models.Post;
 import com.codeup.blog.models.User;
 import com.codeup.blog.repos.PostRepository;
