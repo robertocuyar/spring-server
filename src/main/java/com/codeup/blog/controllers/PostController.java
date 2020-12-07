@@ -8,8 +8,11 @@ import com.codeup.blog.repos.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
+
+import javax.validation.Valid;
 
 @Controller
 public class PostController {
@@ -42,7 +45,12 @@ public class PostController {
     }
 
     @PostMapping("/posts/create")
-    public String postCreate (@ModelAttribute Post post) {
+    public String postCreate (@Valid Post post, Errors validation, Model model) {
+        if (validation.hasErrors()){
+            model.addAttribute("errors", validation);
+            model.addAttribute("post", post);
+            return "posts/create";
+        }
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setUser(currentUser);
         postDAO.save(post);

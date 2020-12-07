@@ -3,6 +3,8 @@ package com.codeup.blog.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="posts")
@@ -11,9 +13,12 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotBlank(message = "Post must have a title")
+    @Size(min = 3, message = "A title must be at least 3 characters.")
     @Column (nullable = false, length = 100)
     private String title;
 
+    @NotBlank(message = "Posts must have a body")
     @Column (nullable = false, columnDefinition = "TEXT")
     private String body;
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
     <meta charset="UTF-8">
     <title>Title</title>
@@ -15,9 +16,13 @@
            Create Post
         </a>
         <a href="/sign-up" class="item">Sign up</a>
-        <form class="item" th:action="@{/logout}" th:method="post">
-            <input type="submit" value="Log out">
+        <div sec:authorize ="isAuthenticated()">
+        <form th:action="@{/logout}" th:method="post">
+            <a class = 'item'>
+            <input style="border: 0" class = 'item' type="submit" value="Log out">
+            </a>
         </form>
+        </div>
         <div class="right menu">
             <div class="item">
                 <div class="ui transparent icon input">
@@ -35,10 +40,12 @@
 <div class="field">
     <label>Title</label>
     <input type="text" th:field="*{title}" placeholder="Title" id="title">
+    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" />
 </div>
 <div class="field">
     <label>Blog Body</label>
     <textarea th:field = "*{body}" id="body"></textarea>
+    <p th:if="${#fields.hasErrors('body')}" th:errors="*{body}" />
 </div>
 <button type="submit" class="ui submit button">Submit</button>
 </div>
