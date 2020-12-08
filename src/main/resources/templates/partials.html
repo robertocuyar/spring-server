@@ -15,7 +15,9 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
         <a href="/posts/create" class="item">
            Create Post
         </a>
+        <div sec:authorize ="isAnonymous()">
         <a href="/sign-up" class="item">Sign up</a>
+        </div>
         <div sec:authorize ="isAuthenticated()">
         <form th:action="@{/logout}" th:method="post">
             <a class = 'item'>
@@ -31,9 +33,6 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
                 </div>
             </div>
         </div>
-    </div>
-    <div class="ui segment">
-        <p></p>
     </div>
 </nav>
 <div th:fragment="blog_form">
