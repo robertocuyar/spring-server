@@ -4,11 +4,13 @@
 
 <body>
 <nav th:replace="partials :: navbar" />
-<div class="ui container" th:each="post : ${posts}">
-    <a th:href="@{/posts/{id}(id = ${post.getId()})}">
-    <h1 class="ui header" th:text="${post.getTitle()}"></h1>
-    <br>
-    <p th:text="${post.getBody()}"></p>
+<div class="ui container list" th:each="post : ${posts}">
+    <a class="item" th:href="@{/posts/{id}(id = ${post.getId()})}">
+        <i class="ui avatar image pencil alternate icon"></i>
+        <div class="content">
+    <h1 class="header" th:text="${post.getTitle()}"></h1>
+    <p class="description" th:text="${post.getBody()}"></p>
+        </div>
     <div class="ui section divider"></div>
     </a>
 </div>
