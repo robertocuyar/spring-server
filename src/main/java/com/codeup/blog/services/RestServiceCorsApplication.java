@@ -9,9 +9,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SpringBootApplication
 public class RestServiceCorsApplication {
 
-    public static void main(String[] args){
-        SpringApplication.run(RestServiceCorsApplication.class, args);
-    }
+//    public static void main(String[] args){
+//        SpringApplication.run(RestServiceCorsApplication.class, args);
+//    }
 
     @Bean
     public WebMvcConfigurer corsConfigurer(){
