@@ -4,3 +4,7 @@
     --dark-blue: #19456b;
     --accent-green: #16c79a;
 }
+
+nav {
+    background-color: var(--accent-green);
+}
