@@ -10,7 +10,7 @@ html, body{
 }
 
 nav {
-    background-color: var(--accent-green);
+    background-color: var(--dark-blue);
     z-index: 10;
 }
 
@@ -20,4 +20,26 @@ nav {
 
 body {
     background-image: url("../img/connect.png");
+}
+
+.fixed-bg{
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    display: table;
+}
+
+#project-one{
+    background-image: url("../img/yumrando.png");
+    color: var(--light-blue);
+    text-shadow: 2px 2px var(--dark-blue);
+    opacity: 0.9;
+}
+.project-desc{
+    background-color: var(--dark-blue);
+    color: var(--light);
 }
