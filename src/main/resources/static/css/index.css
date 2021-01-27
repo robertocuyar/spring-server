@@ -5,6 +5,10 @@
     --accent-green: #16c79a;
 }
 
+html, body{
+    height: 100%;
+}
+
 nav {
     background-color: var(--accent-green);
     z-index: 10;
@@ -15,5 +19,5 @@ nav {
 }
 
 body {
-    background-image: url("connect.png");
+    background-image: url("../img/connect.png");
 }
