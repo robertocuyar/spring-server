@@ -39,6 +39,20 @@ body {
     text-shadow: 2px 2px var(--dark-blue);
     opacity: 0.9;
 }
+
+#project-two {
+    background-image: url("../img/bootset.png");
+    color: var(--light-blue);
+    text-shadow: 2px 2px var(--dark-blue);
+    opacity: 0.9;
+}
+
+#project-three{
+    background-image: url("../img/dweather.png");
+    color: var(--light-blue);
+    text-shadow: 2px 2px var(--dark-blue);
+    opacity: 0.9;
+}
 .project-desc{
     background-color: var(--dark-blue);
     color: var(--light);
