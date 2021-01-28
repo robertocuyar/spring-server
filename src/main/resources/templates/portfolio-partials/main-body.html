@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <div th:fragment="main-boot" class="container-fluid">
-    <div class="row justify-content-center">Header</div>
-    <div class="row justify-content-center">Project Container</div>
+    <div class="row text-center justify-content-center py-3" id="center-text">
+        <h1>My Projects</h1>
+    </div>
+    <div th:replace="portfolio-partials/project-container :: project-container" >Project Container</div>
 </div>
 </html>
