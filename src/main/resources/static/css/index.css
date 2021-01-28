@@ -31,27 +31,29 @@ body {
     width: 100%;
     text-align: center;
     display: table;
+    opacity: 0.9;
+}
+
+.text-highlight{
+    color: var(--light-blue);
+    text-shadow: 2px 2px var(--dark-blue);
+}
+
+#center-text{
+    color: var(--light-blue);
 }
 
 #project-one{
     background-image: url("../img/yumrando.png");
-    color: var(--light-blue);
-    text-shadow: 2px 2px var(--dark-blue);
-    opacity: 0.9;
+
 }
 
 #project-two {
     background-image: url("../img/bootset.png");
-    color: var(--light-blue);
-    text-shadow: 2px 2px var(--dark-blue);
-    opacity: 0.9;
 }
 
 #project-three{
     background-image: url("../img/dweather.png");
-    color: var(--light-blue);
-    text-shadow: 2px 2px var(--dark-blue);
-    opacity: 0.9;
 }
 .project-desc{
     background-color: var(--dark-blue);
@@ -60,6 +62,7 @@ body {
 
 .links{
     color: var(--light);
+    cursor: pointer;
 }
 
 .links:hover {
