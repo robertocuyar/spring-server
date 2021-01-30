@@ -38,7 +38,7 @@ body {
 }
 
 .text-highlight{
-    color: var(--light-blue);
+    color: var(--light);
     text-shadow: 2px 2px var(--dark-blue);
     font-family: var(--head-font);
 }
@@ -49,6 +49,9 @@ body {
 
 p {
     font-family: var(--sub-font);
+}
+i {
+    font-size: 1.5rem;
 }
 
 #project-one{
