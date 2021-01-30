@@ -44,16 +44,16 @@ body {
 }
 
 #project-one{
-    background-image: url("../img/yumrando.png");
+    background-image: url("../img/yumrandoFinal.png");
 
 }
 
 #project-two {
-    background-image: url("../img/bootset.png");
+    background-image: url("../img/bootsetFinal.png");
 }
 
 #project-three{
-    background-image: url("../img/dweather.png");
+    background-image: url("../img/dweatherFinal.png");
 }
 .project-desc{
     background-color: var(--dark-blue);
