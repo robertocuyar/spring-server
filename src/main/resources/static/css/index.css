@@ -3,6 +3,8 @@
     --light-blue: #11698e;
     --dark-blue: #19456b;
     --accent-green: #16c79a;
+    --head-font: 'Lato', sans-serif;
+    --sub-font: 'Roboto', sans-serif;
 }
 
 html, body{
@@ -12,6 +14,7 @@ html, body{
 nav {
     background-color: var(--dark-blue);
     z-index: 10;
+    font-family: var(--head-font);
 }
 
 .important-text{
@@ -35,17 +38,24 @@ body {
 }
 
 .text-highlight{
-    color: var(--light-blue);
+    color: var(--light);
     text-shadow: 2px 2px var(--dark-blue);
+    font-family: var(--head-font);
 }
 
 #center-text{
     color: var(--light-blue);
 }
 
+p {
+    font-family: var(--sub-font);
+}
+i {
+    font-size: 1.75rem;
+}
+
 #project-one{
     background-image: url("../img/yumrandoFinal.png");
-
 }
 
 #project-two {
