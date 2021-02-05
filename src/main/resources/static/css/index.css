@@ -78,3 +78,8 @@ i {
 .links:hover {
     color: var(--accent-green);
 }
+
+img {
+    width: 70% !important;
+    box-shadow: 2px 2px 20px #252525;
+}
