@@ -7,9 +7,9 @@
     --sub-font: 'Roboto', sans-serif;
 }
 
-html, body{
-    height: 100%;
-}
+/*html, body{*/
+/*    height: 100%;*/
+/*}*/
 
 nav {
     background-color: var(--dark-blue);
@@ -81,5 +81,5 @@ i {
 
 img {
     width: 70% !important;
-    box-shadow: 2px 2px 20px #252525;
+    box-shadow: 0 0  25px 10px #132743;
 }
