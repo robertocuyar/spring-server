@@ -7,10 +7,6 @@
     --sub-font: 'Roboto', sans-serif;
 }
 
-/*html, body{*/
-/*    height: 100%;*/
-/*}*/
-
 nav {
     background-color: var(--dark-blue);
     z-index: 10;
