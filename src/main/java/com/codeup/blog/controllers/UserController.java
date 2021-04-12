@@ -32,4 +32,9 @@ public class UserController {
         users.save(user);
         return "redirect:/login";
     }
+
+    @GetMapping("/donuts")
+    public String donutPage (){
+        return "users/donuts";
+    }
 }
