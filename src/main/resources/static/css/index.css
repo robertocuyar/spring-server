@@ -61,6 +61,10 @@ i {
 #project-three{
     background-image: url("../img/dweatherFinal.png");
 }
+
+#project-four{
+    background-image: url("../img/bookziesFull.png");
+}
 .project-desc{
     background-color: var(--dark-blue);
     color: var(--light);
@@ -78,4 +82,8 @@ i {
 img {
     width: 70% !important;
     box-shadow: 0 0  25px 10px #132743;
+}
+
+#dev-name{
+    font-size: 45px;
 }
