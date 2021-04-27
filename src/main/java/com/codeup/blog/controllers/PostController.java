@@ -21,32 +21,33 @@ public class PostController {
     private final UserRepository userDAO;
     private final EmailService emailService;
 
-    public PostController (PostRepository postDAO, UserRepository userDAO, EmailService emailService){
+    public PostController(PostRepository postDAO, UserRepository userDAO, EmailService emailService) {
         this.postDAO = postDAO;
         this.userDAO = userDAO;
         this.emailService = emailService;
     }
+
     @GetMapping("/posts")
-    public String postIndex (Model model){
+    public String postIndex(Model model) {
         model.addAttribute("posts", postDAO.findAll());
         return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
-    public String postView(@PathVariable long id, Model model){
+    public String postView(@PathVariable long id, Model model) {
         model.addAttribute("post", postDAO.getById(id));
         return "posts/show";
     }
 
     @GetMapping("/posts/create")
-    public String postCreateForm (Model model){
+    public String postCreateForm(Model model) {
         model.addAttribute("post", new Post());
         return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    public String postCreate (@Valid Post post, Errors validation, Model model) {
-        if (validation.hasErrors()){
+    public String postCreate(@Valid Post post, Errors validation, Model model) {
+        if (validation.hasErrors()) {
             model.addAttribute("errors", validation);
             model.addAttribute("post", post);
             return "posts/create";
@@ -54,32 +55,30 @@ public class PostController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setUser(currentUser);
         postDAO.save(post);
-        emailService.prepareAndSend(post,"Creation", "You created a new blog post!");
+        emailService.prepareAndSend(post, "Creation", "You created a new blog post!");
         return "redirect:/posts";
     }
 
     @PostMapping("/posts/delete/{id}")
-    public RedirectView postDelete (@PathVariable long id){
+    public RedirectView postDelete(@PathVariable long id) {
         postDAO.deleteById(id);
         return new RedirectView("/posts");
     }
 
-    @GetMapping ("/posts/edit/{id}")
-    public String postEdit (@PathVariable long id, Model model){
+    @GetMapping("/posts/edit/{id}")
+    public String postEdit(@PathVariable long id, Model model) {
         model.addAttribute("post", postDAO.getById(id));
         return "posts/edit";
     }
 
-    @PostMapping ("/posts/edit/{id}")
-    public RedirectView postEditResult (@PathVariable long id, @ModelAttribute Post post){
-       Post editPost = postDAO.getById(id);
+    @PostMapping("/posts/edit/{id}")
+    public RedirectView postEditResult(@PathVariable long id, @ModelAttribute Post post) {
+        Post editPost = postDAO.getById(id);
         editPost.setTitle(post.getTitle());
         editPost.setBody(post.getBody());
         postDAO.save(editPost);
         return new RedirectView("/posts");
     }
-
-
 
 
 }

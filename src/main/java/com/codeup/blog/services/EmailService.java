@@ -17,7 +17,7 @@ public class EmailService {
     @Value("${spring.mail.from")
     private String from;
 
-    public void prepareAndSend(Post post, String subject, String body){
+    public void prepareAndSend(Post post, String subject, String body) {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setFrom(from);
         msg.setTo(post.getUser().getEmail());
@@ -26,8 +26,7 @@ public class EmailService {
 
         try {
             this.emailSender.send(msg);
-        }
-        catch (MailException ex){
+        } catch (MailException ex) {
             System.err.println(ex.getMessage());
         }
     }

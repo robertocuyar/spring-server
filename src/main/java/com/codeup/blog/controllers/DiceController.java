@@ -12,25 +12,25 @@ import java.util.ArrayList;
 public class DiceController {
 
     @GetMapping("/roll-dice")
-    public String landing(){
+    public String landing() {
         return "roll-dice";
     }
 
     @GetMapping("/roll-dice/{guess}")
-    public String guessResponse (@PathVariable String guess, Model model, @ModelAttribute ArrayList<Roll> guessResults){
+    public String guessResponse(@PathVariable String guess, Model model, @ModelAttribute ArrayList<Roll> guessResults) {
         model.addAttribute("attempt", true);
-        if (guessResults != null){
+        if (guessResults != null) {
             int actual = randomGenerator();
             guessResults.add(new Roll(guess, actual));
         } else {
-          guessResults= new ArrayList<>();
+            guessResults = new ArrayList<>();
             int actual = randomGenerator();
             guessResults.add(new Roll(guess, actual));
         }
 
         int correct = 0;
-        for(Roll attempt : guessResults){
-            if (attempt.getActual() == Integer.parseInt(attempt.getGuess())){
+        for (Roll attempt : guessResults) {
+            if (attempt.getActual() == Integer.parseInt(attempt.getGuess())) {
                 correct++;
             }
         }
@@ -39,13 +39,14 @@ public class DiceController {
         return "roll-dice";
     }
 
-    private static int randomGenerator () {
+    private static int randomGenerator() {
         int min = 1;
-       int max = 6;
-     return (int) (Math.random() * (max - min + 1) + min);
+        int max = 6;
+        return (int) (Math.random() * (max - min + 1) + min);
     }
+
     @ModelAttribute("rollList")
-    public ArrayList<Roll> rollList(){
+    public ArrayList<Roll> rollList() {
         return new ArrayList<>();
     }
 }

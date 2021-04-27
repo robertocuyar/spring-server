@@ -8,21 +8,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/posts")
 public class RestPostController {
 
-private final PostRepository postDao;
+    private final PostRepository postDao;
 
-RestPostController (PostRepository postDao){
-    this.postDao = postDao;
-}
-@CrossOrigin
-@GetMapping("/data")
-    List<Post> all(){
-    return postDao.findAll();
-}
+    RestPostController(PostRepository postDao) {
+        this.postDao = postDao;
+    }
+
+    @CrossOrigin
+    @GetMapping("/data")
+    List<Post> all() {
+        return postDao.findAll();
+    }
 
 }
 

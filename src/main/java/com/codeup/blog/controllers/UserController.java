@@ -14,19 +14,19 @@ public class UserController {
     private Users users;
     private PasswordEncoder passwordEncoder;
 
-    public UserController(Users users, PasswordEncoder passwordEncoder){
-        this.users= users;
+    public UserController(Users users, PasswordEncoder passwordEncoder) {
+        this.users = users;
         this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/sign-up")
-    public String showSignupForm (Model model){
+    public String showSignupForm(Model model) {
         model.addAttribute("user", new User());
         return "users/sign-up";
     }
 
     @PostMapping("/sign-up")
-    public String saveUser (@ModelAttribute User user) {
+    public String saveUser(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         users.save(user);
@@ -34,7 +34,7 @@ public class UserController {
     }
 
     @GetMapping("/donuts")
-    public String donutPage (){
+    public String donutPage() {
         return "users/donuts";
     }
 }
