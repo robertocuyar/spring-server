@@ -3,11 +3,11 @@
 <head th:replace="partials :: head"/>
 
 <body>
-<nav th:replace="partials :: navbar" />
+<nav th:replace="partials :: navbar"/>
 <div class="ui container">
-<form th:method = "post" class="ui form" th:action="@{/posts/create}" th:object="${post}">
-    <div th:replace="partials :: blog_form"/>
-</form>
+    <form th:method="post" class="ui form" th:action="@{/posts/create}" th:object="${post}">
+        <div th:replace="partials :: blog_form"/>
+    </form>
 </div>
 <div th:replace="partials :: footer"/>
 </body>

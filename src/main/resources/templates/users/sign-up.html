@@ -5,9 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-<nav th:replace="partials :: navbar" />
+<nav th:replace="partials :: navbar"/>
 <div class="ui container">
-<h1>Create an Account</h1>
+    <h1>Create an Account</h1>
     <form th:action="@{sign-up}" method="POST" th:object="${user}">
         <label for="username">Username</label>
         <input id=username type="text" th:field="*{username}">
