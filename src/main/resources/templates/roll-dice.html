@@ -21,9 +21,10 @@
 <div th:if="${attempt}">
     <h2> You have gotten <span th:text="${correct}"></span> correct.</h2>
     <div th:each="turn : ${roll}">
-    <h3>
-    You guessed <span th:text="${turn.getGuess()}"></span>. The dice rolled <span th:text="${turn.getActual()}"></span>. This is attempt # <span th:text ="${roll.indexOf(turn)}"></span>.
-    </h3>
+        <h3>
+            You guessed <span th:text="${turn.getGuess()}"></span>. The dice rolled <span
+                th:text="${turn.getActual()}"></span>. This is attempt # <span th:text="${roll.indexOf(turn)}"></span>.
+        </h3>
     </div>
 </div>
 </body>

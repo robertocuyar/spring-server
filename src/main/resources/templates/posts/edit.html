@@ -3,9 +3,9 @@
 <head th:replace="partials :: head"/>
 
 <body>
-<nav th:replace="partials :: navbar" />
+<nav th:replace="partials :: navbar"/>
 <div class="ui container">
-    <form th:method ="post" class="ui form" th:action = "@{/posts/edit/{id}(id = ${post.getId()})}" th:object = "${post}">
+    <form th:method="post" class="ui form" th:action="@{/posts/edit/{id}(id = ${post.getId()})}" th:object="${post}">
         <div th:replace="partials :: blog_form"/>
     </form>
 </div>

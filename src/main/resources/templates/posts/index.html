@@ -3,19 +3,19 @@
 <head th:replace="partials :: head"/>
 
 <body>
-<nav th:replace="partials :: navbar" />
+<nav th:replace="partials :: navbar"/>
 <h1 class="ui center aligned icon header">
     <i class="circular paper plane outline icon"></i>
-        Blogs Ahoy!
+    Blogs Ahoy!
 </h1>
 <div class="ui container list" th:each="post : ${posts}">
     <a class="item" th:href="@{/posts/{id}(id = ${post.getId()})}">
         <i class="ui avatar image pencil alternate icon"></i>
         <div class="content">
-    <h3 class="header" th:text="${post.getTitle()}"></h3>
-    <p class="description" th:text="${post.getBody()}"></p>
+            <h3 class="header" th:text="${post.getTitle()}"></h3>
+            <p class="description" th:text="${post.getBody()}"></p>
         </div>
-    <div class="ui section divider"></div>
+        <div class="ui section divider"></div>
     </a>
 </div>
 <div th:replace="partials :: footer"/>
